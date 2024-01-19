@@ -21,8 +21,6 @@ export const Chart = () => {
       ]}
       sx={{
         "& .MuiChartsAxis-root, & .MuiChartsAxis-line, & .MuiChartsAxis-tick": {
-          // stroke: `${theme.palette.primary.light} !important`,
-          // fill: theme.palette.primary.light,
           opacity: 0.5,
         },
       }}
