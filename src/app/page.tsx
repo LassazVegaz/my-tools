@@ -1,9 +1,12 @@
-import { Box, Button, Container, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
+import { Chart } from "./components";
 
 export default function Home() {
   return (
     <Box height="100vh" display="grid" gridTemplateRows="1fr auto">
-      <Box></Box>
+      <Box display="flow-root" alignItems="center" py={10} px={30}>
+        <Chart />
+      </Box>
 
       <Box
         bgcolor="#EAECFF"
