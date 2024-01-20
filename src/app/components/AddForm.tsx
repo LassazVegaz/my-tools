@@ -1,9 +1,10 @@
 "use client";
-import { Box, TextField, Button } from "@mui/material";
-import AddFormUtils from "./AddForm.hook";
+import { Box, Button } from "@mui/material";
+import useAddFormUtils from "./AddForm.hook";
+import FormField from "./FormField";
 
 const AddForm = () => {
-  const utils = AddFormUtils();
+  const utils = useAddFormUtils();
 
   return (
     <Box
@@ -17,8 +18,17 @@ const AddForm = () => {
       height="20vh"
       gap={2}
     >
-      <TextField size="small" type="date" sx={{ width: 200 }} />
-      <TextField
+      <FormField
+        name="date"
+        form={utils.form}
+        size="small"
+        type="date"
+        sx={{ width: 200 }}
+      />
+
+      <FormField
+        form={utils.form}
+        name="hours"
         size="small"
         sx={{
           width: 130,
@@ -27,7 +37,10 @@ const AddForm = () => {
           },
         }}
       />
-      <Button variant="outlined">Add</Button>
+
+      <Button variant="outlined" type="submit">
+        Add
+      </Button>
     </Box>
   );
 };
