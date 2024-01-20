@@ -1,28 +1,35 @@
 "use client";
 import { Box, TextField, Button } from "@mui/material";
+import AddFormUtils from "./AddForm.hook";
 
-const AddForm = () => (
-  <Box
-    bgcolor="#EAECFF"
-    boxShadow="0px 0px 9.9px 0px #6472FF"
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    height="20vh"
-    gap={2}
-  >
-    <TextField size="small" type="date" sx={{ width: 200 }} />
-    <TextField
-      size="small"
-      sx={{
-        width: 130,
-        "& input": {
-          textAlign: "center",
-        },
-      }}
-    />
-    <Button variant="outlined">Add</Button>
-  </Box>
-);
+const AddForm = () => {
+  const utils = AddFormUtils();
+
+  return (
+    <Box
+      component="form"
+      onSubmit={utils.form.handleSubmit}
+      bgcolor="#EAECFF"
+      boxShadow="0px 0px 9.9px 0px #6472FF"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height="20vh"
+      gap={2}
+    >
+      <TextField size="small" type="date" sx={{ width: 200 }} />
+      <TextField
+        size="small"
+        sx={{
+          width: 130,
+          "& input": {
+            textAlign: "center",
+          },
+        }}
+      />
+      <Button variant="outlined">Add</Button>
+    </Box>
+  );
+};
 
 export default AddForm;
