@@ -23,6 +23,9 @@ dependencies:
   '@prisma/client':
     specifier: 5.8.1
     version: 5.8.1(prisma@5.8.1)
+  fk-mui:
+    specifier: ^1.0.6
+    version: 1.0.6(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@mui/material@5.15.5)(formik@2.4.5)(react@18.2.0)
   formik:
     specifier: ^2.4.5
     version: 2.4.5(react@18.2.0)
@@ -2801,6 +2804,22 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
     dev: true
+
+  /fk-mui@1.0.6(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@mui/material@5.15.5)(formik@2.4.5)(react@18.2.0):
+    resolution: {integrity: sha512-1AzogF7LsdfB4TYXJMb5LNExmIWdbODWH09e41kRuax84Rglmxy3hBNS67JY2jqltXhBUErzKgqFfvrJWAtM4A==}
+    peerDependencies:
+      '@emotion/react': ^11.11.3
+      '@emotion/styled': ^11.11.0
+      '@mui/material': ^5.15.5
+      formik: ^2.4.5
+      react: ^18.2.0
+    dependencies:
+      '@emotion/react': 11.11.3(@types/react@18.2.48)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.3)(@types/react@18.2.48)(react@18.2.0)
+      '@mui/material': 5.15.5(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
+      formik: 2.4.5(react@18.2.0)
+      react: 18.2.0
+    dev: false
 
   /flat-cache@3.2.0:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}

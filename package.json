@@ -18,6 +18,7 @@
     "@mui/material": "^5.15.5",
     "@mui/x-charts": "^6.18.7",
     "@prisma/client": "5.8.1",
+    "fk-mui": "^1.0.6",
     "formik": "^2.4.5",
     "next": "14.0.4",
     "react": "^18",
