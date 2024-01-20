@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button } from "@mui/material";
+import { Box, Button, CircularProgress } from "@mui/material";
 import useAddFormUtils from "./AddForm.hook";
 import FormField from "./FormField";
 
@@ -23,6 +23,7 @@ const AddForm = () => {
         form={utils.form}
         size="small"
         type="date"
+        disabled={utils.form.isSubmitting}
         sx={{ width: 200 }}
       />
 
@@ -30,6 +31,7 @@ const AddForm = () => {
         form={utils.form}
         name="hours"
         size="small"
+        disabled={utils.form.isSubmitting}
         sx={{
           width: 130,
           "& input": {
@@ -38,9 +40,25 @@ const AddForm = () => {
         }}
       />
 
-      <Button variant="outlined" type="submit">
-        Add
-      </Button>
+      <Box position="relative">
+        <Button
+          variant="outlined"
+          type="submit"
+          disabled={utils.form.isSubmitting}
+        >
+          Add
+        </Button>
+
+        <Box
+          position="absolute"
+          display={utils.form.isSubmitting ? "inline-flex" : "none"}
+          alignItems="center"
+          height="100%"
+          ml={2}
+        >
+          <CircularProgress size={25} thickness={5} />
+        </Box>
+      </Box>
     </Box>
   );
 };
