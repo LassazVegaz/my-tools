@@ -1,22 +1,18 @@
 import { useFormik } from "formik";
-import * as Yup from "yup";
-
-const initialValues = {
-  date: "",
-  hours: "",
-};
-
-const validationSchema = Yup.object({
-  date: Yup.date().required("Required"),
-  hours: Yup.number().required("Required"),
-});
+import { initialValues, validationSchema } from "./AddForm.helper";
+import { submitForm } from "./AddForm.actions";
 
 const useAddFormUtils = () => {
   const form = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async () => {
+      try {
+        await submitForm(form.values);
+        form.resetForm();
+      } catch (error) {
+        console.error(error);
+      }
     },
   });
 
