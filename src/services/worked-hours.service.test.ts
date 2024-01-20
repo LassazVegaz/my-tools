@@ -1,5 +1,9 @@
 import { expect, test } from "@jest/globals";
+import { WorkedHoursService } from "./worked-hours.service";
+import prismaMock from "@/mocks/prisma.mock";
 
-test("just testing", () => {
-  expect(1).toBe(1);
+test("worked hours service creation", () => {
+  let service: WorkedHoursService | undefined;
+  expect(() => (service = new WorkedHoursService(prismaMock))).not.toThrow();
+  expect(service).toBeDefined();
 });
