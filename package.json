@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "prisma:migrate": "dotenv -e .env.development.local -- prisma migrate dev --name",
+    "prisma:migrate": "dotenv -e .env.development.local -- prisma migrate dev",
     "prisma:migrate:prod": "dotenv -e .env.production.local -- prisma migrate deploy"
   },
   "dependencies": {
