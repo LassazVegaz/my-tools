@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
-import { Chart } from "./components";
+import Chart from "./components/Chart";
 
 export default function Home() {
   return (
