@@ -50,4 +50,15 @@ export class WorkedHoursService {
 
     return workedHours !== null;
   }
+
+  /**
+   * Get all worked hours ordered by date.
+   */
+  async getAllWorkedHours() {
+    return await this.prisma.workedHours.findMany({
+      orderBy: {
+        date: "asc",
+      },
+    });
+  }
 }

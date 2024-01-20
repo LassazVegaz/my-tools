@@ -2,7 +2,11 @@
 import { useTheme } from "@mui/material";
 import { LineChart } from "@mui/x-charts";
 
-const Chart = () => {
+type ChartProps = {
+  data: { dateLabel: string; hours: number }[];
+};
+
+const Chart = (props: ChartProps) => {
   const theme = useTheme();
 
   return (
@@ -10,15 +14,16 @@ const Chart = () => {
       xAxis={[
         {
           scaleType: "point",
-          data: ["30/1", "31/1", "1/2", "2/2", "3/2", "4/2"],
+          dataKey: "dateLabel",
         },
       ]}
       series={[
         {
-          data: [2, 5.5, 2, 8.5, 1.5, 5],
+          dataKey: "hours",
           color: theme.palette.primary.main,
         },
       ]}
+      dataset={props.data}
       sx={{
         "& .MuiChartsAxis-root, & .MuiChartsAxis-line, & .MuiChartsAxis-tick": {
           opacity: 0.5,
