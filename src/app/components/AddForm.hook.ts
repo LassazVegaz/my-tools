@@ -11,7 +11,7 @@ const validationSchema = Yup.object({
   hours: Yup.number().required("Required"),
 });
 
-const AddFormUtils = () => {
+const useAddFormUtils = () => {
   const form = useFormik({
     initialValues,
     validationSchema,
@@ -23,4 +23,4 @@ const AddFormUtils = () => {
   return { form };
 };
 
-export default AddFormUtils;
+export default useAddFormUtils;
