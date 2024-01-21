@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { initialFormValues, formValidationSchema, ChartData } from "../helpers";
 import { getChartData, submitForm } from "./ClientComponent.actions";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useClientComponentUtils = () => {
   const [chartData, setChartData] = useState<ChartData>([]);
@@ -15,6 +15,8 @@ const useClientComponentUtils = () => {
         await submitForm(form.values);
         form.resetForm();
         toast.success("Worked hours added successfully.");
+
+        updateChartData();
       } catch (error) {
         toast.error("Adding worked hours failed. Please try again.");
         console.error(error);
@@ -22,17 +24,14 @@ const useClientComponentUtils = () => {
     },
   });
 
-  useEffect(() => {
-    let mounted = true;
-
-    getChartData().then((workedHours) => {
-      mounted && setChartData(workedHours);
-    });
-
-    return () => {
-      mounted = false;
-    };
+  const updateChartData = useCallback(async () => {
+    const data = await getChartData();
+    setChartData(data);
   }, []);
+
+  useEffect(() => {
+    updateChartData();
+  }, [updateChartData]);
 
   return {
     form,
