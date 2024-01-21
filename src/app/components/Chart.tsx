@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { ChartData } from "../helpers";
 
 type ChartProps = {
-  workedHours: ChartData;
+  chartData: ChartData;
 };
 
 const formatWorkedHours = (workedHours: ChartData) =>
@@ -18,8 +18,8 @@ const Chart = (props: ChartProps) => {
   const theme = useTheme();
 
   const dataset = useMemo(
-    () => formatWorkedHours(props.workedHours),
-    [props.workedHours]
+    () => formatWorkedHours(props.chartData),
+    [props.chartData]
   );
 
   return (

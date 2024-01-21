@@ -16,10 +16,7 @@ export const submitForm = async (formValues: FormValues) => {
   }
 };
 
-/**
- * Get worked hours to display in the chart
- */
-export const getWorkedHours = async (): Promise<ChartData> => {
+export const getChartData = async (): Promise<ChartData> => {
   const data = await workedHoursService.getAllWorkedHours();
   return data.map((workedHours) => ({
     date: workedHours.date,

@@ -1,11 +1,11 @@
 import { useFormik } from "formik";
 import { initialFormValues, formValidationSchema, ChartData } from "../helpers";
-import { getWorkedHours, submitForm } from "./ClientComponent.actions";
+import { getChartData, submitForm } from "./ClientComponent.actions";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 
 const useClientComponentUtils = () => {
-  const [workedHours, setWorkedHours] = useState<ChartData>([]);
+  const [chartData, setChartData] = useState<ChartData>([]);
 
   const form = useFormik({
     initialValues: initialFormValues,
@@ -25,8 +25,8 @@ const useClientComponentUtils = () => {
   useEffect(() => {
     let mounted = true;
 
-    getWorkedHours().then((workedHours) => {
-      mounted && setWorkedHours(workedHours);
+    getChartData().then((workedHours) => {
+      mounted && setChartData(workedHours);
     });
 
     return () => {
@@ -36,7 +36,7 @@ const useClientComponentUtils = () => {
 
   return {
     form,
-    workedHours,
+    chartData,
   };
 };
 
