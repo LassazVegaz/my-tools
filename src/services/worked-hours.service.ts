@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, WorkedHours } from "@prisma/client";
 
 export class WorkedHoursService {
   constructor(private readonly prisma: PrismaClient) {}
@@ -54,7 +54,7 @@ export class WorkedHoursService {
   /**
    * Get all worked hours ordered by date.
    */
-  async getAllWorkedHours() {
+  async getAllWorkedHours(): Promise<WorkedHours[]> {
     return await this.prisma.workedHours.findMany({
       orderBy: {
         date: "asc",
