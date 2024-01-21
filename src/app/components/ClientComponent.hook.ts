@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 
 const useClientComponentUtils = () => {
   const [chartData, setChartData] = useState<ChartData>([]);
+  const [isChartLoading, setIsChartLoading] = useState(true);
 
   const form = useFormik({
     initialValues: initialFormValues,
@@ -25,8 +26,10 @@ const useClientComponentUtils = () => {
   });
 
   const updateChartData = useCallback(async () => {
+    setIsChartLoading(true);
     const data = await getChartData();
     setChartData(data);
+    setIsChartLoading(false);
   }, []);
 
   useEffect(() => {
@@ -36,6 +39,7 @@ const useClientComponentUtils = () => {
   return {
     form,
     chartData,
+    isChartLoading,
   };
 };
 

@@ -19,7 +19,9 @@ const ClientComponent = () => {
       >
         <Chart chartData={utils.chartData} />
 
-        <BoxProgress position="absolute" right={20} bottom={20} />
+        {utils.isChartLoading && (
+          <BoxProgress position="absolute" right={20} bottom={20} />
+        )}
       </Box>
       <AddForm form={utils.form} />
     </>
