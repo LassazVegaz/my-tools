@@ -1,12 +1,12 @@
 import { useFormik } from "formik";
-import { initialValues, validationSchema } from "./AddForm.helper";
-import { submitForm } from "./AddForm.actions";
+import { initialFormValues, formValidationSchema } from "../helpers";
+import { submitForm } from "./ClientComponent.actions";
 import { toast } from "react-toastify";
 
-const useAddFormUtils = () => {
+const useClientComponentUtils = () => {
   const form = useFormik({
-    initialValues,
-    validationSchema,
+    initialValues: initialFormValues,
+    validationSchema: formValidationSchema,
     onSubmit: async () => {
       try {
         await submitForm(form.values);
@@ -22,4 +22,4 @@ const useAddFormUtils = () => {
   return { form };
 };
 
-export default useAddFormUtils;
+export default useClientComponentUtils;
