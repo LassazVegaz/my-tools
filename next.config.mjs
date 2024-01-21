@@ -1,4 +1,6 @@
 // @ts-check
-import withPWA from "@ducanh2912/next-pwa";
+import withPWAInit from "@ducanh2912/next-pwa";
 
-export default withPWA({});
+const withPWA = withPWAInit();
+
+export default withPWA();
