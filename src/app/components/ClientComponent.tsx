@@ -3,14 +3,23 @@ import { Box } from "@mui/material";
 import AddForm from "./AddForm";
 import Chart from "./Chart";
 import useUtils from "./ClientComponent.hook";
+import BoxProgress from "./BoxProgress";
 
 const ClientComponent = () => {
   const utils = useUtils();
 
   return (
     <>
-      <Box display="flow-root" alignItems="center" py={10} px={30}>
+      <Box
+        display="flow-root"
+        alignItems="center"
+        py={10}
+        px={30}
+        position="relative"
+      >
         <Chart chartData={utils.chartData} />
+
+        <BoxProgress position="absolute" right={20} bottom={20} />
       </Box>
       <AddForm form={utils.form} />
     </>

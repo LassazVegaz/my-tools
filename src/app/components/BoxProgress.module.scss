@@ -1,0 +1,13 @@
+.box-progress {
+  animation: box-progress 1s linear infinite;
+  background: radial-gradient(#00b8d1 0%, #a5a5ff45 100%);
+}
+
+@keyframes box-progress {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
