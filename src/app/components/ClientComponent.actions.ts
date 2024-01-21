@@ -15,3 +15,10 @@ export const submitForm = async (formValues: FormValues) => {
     await workedHoursService.addWorkedHours(hours, date);
   }
 };
+
+/**
+ * Get worked hours to display in the chart
+ */
+export const getWorkedHours = async () => {
+  return await workedHoursService.getAllWorkedHours();
+};

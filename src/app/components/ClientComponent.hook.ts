@@ -1,9 +1,13 @@
 import { useFormik } from "formik";
 import { initialFormValues, formValidationSchema } from "../helpers";
-import { submitForm } from "./ClientComponent.actions";
+import { getWorkedHours, submitForm } from "./ClientComponent.actions";
 import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { WorkedHours } from "@prisma/client";
 
 const useClientComponentUtils = () => {
+  const [workedHours, setWorkedHours] = useState<WorkedHours[]>([]);
+
   const form = useFormik({
     initialValues: initialFormValues,
     validationSchema: formValidationSchema,
@@ -19,7 +23,22 @@ const useClientComponentUtils = () => {
     },
   });
 
-  return { form };
+  useEffect(() => {
+    let mounted = true;
+
+    getWorkedHours().then((workedHours) => {
+      mounted && setWorkedHours(workedHours);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return {
+    form,
+    workedHours,
+  };
 };
 
 export default useClientComponentUtils;
