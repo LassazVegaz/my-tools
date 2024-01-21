@@ -19,6 +19,11 @@ const AddForm = (props: AddFormProps) => (
     justifyContent="center"
     height="20vh"
     gap={2}
+    sx={{
+      ["@media (prefers-color-scheme: dark)"]: {
+        bgcolor: "#001d2f",
+      },
+    }}
   >
     <FormField
       name="date"
