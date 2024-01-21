@@ -1,5 +1,5 @@
 "use server";
-import { FormValues } from "../helpers";
+import { ChartData, FormValues } from "../helpers";
 import { workedHoursService } from "@/services";
 
 /**
@@ -19,6 +19,10 @@ export const submitForm = async (formValues: FormValues) => {
 /**
  * Get worked hours to display in the chart
  */
-export const getWorkedHours = async () => {
-  return await workedHoursService.getAllWorkedHours();
+export const getWorkedHours = async (): Promise<ChartData> => {
+  const data = await workedHoursService.getAllWorkedHours();
+  return data.map((workedHours) => ({
+    date: workedHours.date,
+    hours: workedHours.hours.toNumber(),
+  }));
 };
