@@ -2,6 +2,7 @@
 import { useTheme } from "@mui/material";
 import { LineChart } from "@mui/x-charts";
 import { WorkedHours } from "@prisma/client";
+import { useMemo } from "react";
 
 type ChartProps = {
   workedHours: WorkedHours[];
@@ -15,6 +16,11 @@ const formatWorkedHours = (workedHours: WorkedHours[]) =>
 
 const Chart = (props: ChartProps) => {
   const theme = useTheme();
+
+  const dataset = useMemo(
+    () => formatWorkedHours(props.workedHours),
+    [props.workedHours]
+  );
 
   return (
     <LineChart
@@ -30,7 +36,7 @@ const Chart = (props: ChartProps) => {
           color: theme.palette.primary.main,
         },
       ]}
-      dataset={formatWorkedHours(props.workedHours)}
+      dataset={dataset}
       sx={{
         "& .MuiChartsAxis-root, & .MuiChartsAxis-line, & .MuiChartsAxis-tick": {
           opacity: 0.5,
