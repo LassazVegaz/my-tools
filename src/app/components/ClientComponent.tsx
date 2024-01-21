@@ -16,6 +16,8 @@ const ClientComponent = () => {
         py={10}
         px={30}
         position="relative"
+        bgcolor="background.default"
+        sx={{ transitionDuration: ".5s" }}
       >
         <Chart chartData={utils.chartData} />
 
