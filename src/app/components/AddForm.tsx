@@ -1,6 +1,6 @@
 "use client";
 import { Box, Button, CircularProgress } from "@mui/material";
-import FormField from "./FormField";
+import { FormTextField } from "./FormField";
 import { FormikProps } from "formik";
 import { FormValues } from "../helpers";
 
@@ -25,7 +25,7 @@ const AddForm = (props: AddFormProps) => (
       },
     }}
   >
-    <FormField
+    <FormTextField
       name="date"
       form={props.form}
       size="small"
@@ -34,7 +34,7 @@ const AddForm = (props: AddFormProps) => (
       sx={{ width: 200 }}
     />
 
-    <FormField
+    <FormTextField
       form={props.form}
       name="hours"
       size="small"

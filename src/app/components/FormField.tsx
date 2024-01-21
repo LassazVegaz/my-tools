@@ -6,7 +6,11 @@ type FormFieldProps<T> = Omit<TextFieldProps, "name"> & {
   form: FormikProps<T>;
 };
 
-const FormField = <T,>({ name, form, ...props }: FormFieldProps<T>) => {
+export const FormTextField = <T,>({
+  name,
+  form,
+  ...props
+}: FormFieldProps<T>) => {
   const hasError = form.touched[name] && Boolean(form.errors[name]);
 
   return (
@@ -20,5 +24,3 @@ const FormField = <T,>({ name, form, ...props }: FormFieldProps<T>) => {
     />
   );
 };
-
-export default FormField;
