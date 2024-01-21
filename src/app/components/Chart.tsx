@@ -4,7 +4,7 @@ import { LineChart } from "@mui/x-charts";
 import { WorkedHours } from "@prisma/client";
 
 type ChartProps = {
-  data: WorkedHours[];
+  workedHours: WorkedHours[];
 };
 
 const formatWorkedHours = (workedHours: WorkedHours[]) =>
@@ -30,7 +30,7 @@ const Chart = (props: ChartProps) => {
           color: theme.palette.primary.main,
         },
       ]}
-      dataset={formatWorkedHours(props.data)}
+      dataset={formatWorkedHours(props.workedHours)}
       sx={{
         "& .MuiChartsAxis-root, & .MuiChartsAxis-line, & .MuiChartsAxis-tick": {
           opacity: 0.5,

@@ -10,7 +10,7 @@ const ClientComponent = () => {
   return (
     <>
       <Box display="flow-root" alignItems="center" py={10} px={30}>
-        <Chart data={utils.workedHours} />
+        <Chart workedHours={utils.workedHours} />
       </Box>
       <AddForm form={utils.form} />
     </>
