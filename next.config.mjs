@@ -5,4 +5,6 @@ const withPWA = withPWAInit({
   disable: process.env.NODE_ENV === "development",
 });
 
-export default withPWA();
+export default withPWA({
+  distDir: process.env.DEPLOY ? "build" : undefined,
+});
