@@ -3,6 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CssBaseline />
+        <ThemeProvider>
+          <CssBaseline />
 
-        {children}
+          {children}
 
-        <ToastContainer />
+          <ToastContainer />
+        </ThemeProvider>
       </body>
     </html>
   );
