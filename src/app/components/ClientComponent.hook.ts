@@ -13,7 +13,10 @@ const useClientComponentUtils = () => {
     validationSchema: formValidationSchema,
     onSubmit: async () => {
       try {
-        await submitForm(form.values);
+        await submitForm({
+          date: form.values.date!.toDate(),
+          hours: form.values.hours,
+        });
         form.resetForm();
         toast.success("Worked hours added successfully.");
 
