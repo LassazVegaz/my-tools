@@ -3,6 +3,12 @@ import { Box, Button, CircularProgress } from "@mui/material";
 import { FormDateField, FormTextField } from "./FormField";
 import { FormikProps } from "formik";
 import { FormValues } from "../helpers";
+import dayjs from "dayjs";
+
+const minDate = dayjs(
+  process.env.NEXT_PUBLIC_MIN_DATE,
+  process.env.NEXT_PUBLIC_DATE_FORMAT
+);
 
 type AddFormProps = {
   form: FormikProps<FormValues>;
@@ -29,6 +35,8 @@ const AddForm = (props: AddFormProps) => (
       form={props.form}
       name="date"
       disabled={props.form.isSubmitting}
+      maxDate={dayjs()}
+      minDate={minDate}
       slotProps={{
         textField: { size: "small", sx: { width: 200 } },
       }}
