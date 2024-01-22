@@ -6,7 +6,9 @@ import { workedHoursService } from "@/services";
  * If working hours for the given date exist, they will be overwritten.
  */
 export const submitForm = async (formValues: FormValues) => {
-  const date = new Date(formValues.date);
+  if (!formValues.date) throw new Error("Date is required.");
+
+  const date = formValues.date.toDate();
   const hours = parseFloat(formValues.hours);
 
   if (await workedHoursService.workedHoursExist(date)) {

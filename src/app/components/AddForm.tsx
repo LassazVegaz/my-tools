@@ -1,6 +1,6 @@
 "use client";
 import { Box, Button, CircularProgress } from "@mui/material";
-import { FormTextField } from "./FormField";
+import { FormDateField, FormTextField } from "./FormField";
 import { FormikProps } from "formik";
 import { FormValues } from "../helpers";
 
@@ -25,13 +25,13 @@ const AddForm = (props: AddFormProps) => (
       },
     }}
   >
-    <FormTextField
-      name="date"
+    <FormDateField
       form={props.form}
-      size="small"
-      type="date"
+      name="date"
       disabled={props.form.isSubmitting}
-      sx={{ width: 200 }}
+      slotProps={{
+        textField: { size: "small", sx: { width: 200 } },
+      }}
     />
 
     <FormTextField
@@ -47,6 +47,7 @@ const AddForm = (props: AddFormProps) => (
       }}
     />
 
+    {/* Add button and its spinner */}
     <Box position="relative">
       <Button
         variant="outlined"
