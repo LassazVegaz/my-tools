@@ -18,8 +18,15 @@ export const submitForm = async (formValues: SubmitFormParams) => {
   }
 };
 
-export const getChartData = async (): Promise<ChartData> => {
-  const data = await workedHoursService.getAllWorkedHours();
+/**
+ * Get worked hours ordered by date. You can filter data between two dates.
+ * `startDate` and `endDate` are inclusive.
+ */
+export const getChartData = async (
+  startDate?: Date,
+  endDate?: Date
+): Promise<ChartData> => {
+  const data = await workedHoursService.getWorkedHours(startDate, endDate);
   return data.map((workedHours) => ({
     date: workedHours.date,
     hours: workedHours.hours.toNumber(),

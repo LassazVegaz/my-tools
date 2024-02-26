@@ -30,7 +30,13 @@ const useClientComponentUtils = () => {
 
   const updateChartData = useCallback(async () => {
     setIsChartLoading(true);
-    const data = await getChartData();
+
+    // chart can show data for the last 40 days
+    const endDate = new Date();
+    const startDate = new Date(endDate);
+    startDate.setDate(startDate.getDate() - 40);
+
+    const data = await getChartData(startDate, endDate);
     setChartData(data);
     setIsChartLoading(false);
   }, []);

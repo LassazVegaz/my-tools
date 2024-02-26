@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { ClientComponent } from "./components";
 
 export default function Home() {
@@ -6,10 +6,14 @@ export default function Home() {
     <Box
       height="100vh"
       display="grid"
-      gridTemplateRows="1fr auto"
+      gridTemplateRows="auto 1fr auto"
       bgcolor="background.default"
       sx={{ transitionDuration: ".5s" }}
     >
+      <Typography variant="h5" textAlign="center" py={2}>
+        Worked Hours of Last 40 Days
+      </Typography>
+
       <ClientComponent />
     </Box>
   );
