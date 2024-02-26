@@ -10,7 +10,13 @@ const ClientComponent = () => {
 
   return (
     <>
-      <Box display="flow-root" alignItems="center" py={10} position="relative">
+      <Box
+        display="flow-root"
+        alignItems="center"
+        pt={0}
+        pb={4}
+        position="relative"
+      >
         <Chart chartData={utils.chartData} />
 
         {utils.isChartLoading && (
