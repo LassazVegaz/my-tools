@@ -52,10 +52,20 @@ export class WorkedHoursService {
   }
 
   /**
-   * Get all worked hours ordered by date.
+   * Get worked hours ordered by date. You can filter data between two dates.
+   * `startDate` and `endDate` are inclusive.
    */
-  async getAllWorkedHours(): Promise<WorkedHours[]> {
+  async getWorkedHours(
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<WorkedHours[]> {
     return await this.prisma.workedHours.findMany({
+      where: {
+        date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
       orderBy: {
         date: "asc",
       },
