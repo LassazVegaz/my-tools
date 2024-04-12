@@ -1,3 +1,5 @@
+import { workedHoursService } from "@/services";
+
 type DataBlockProps = {
   title: string;
   data: string;
@@ -10,7 +12,9 @@ const DataBlock = (props: DataBlockProps) => (
   </div>
 );
 
-export default function NumbersPage() {
+export default async function NumbersPage() {
+  const data = await workedHoursService.getNumericStatistics();
+
   return (
     <main className="pt-5 h-screen grid grid-rows-[auto,1fr] items-center">
       <h1 className="text-center text-4xl">
@@ -19,12 +23,18 @@ export default function NumbersPage() {
 
       <div className="h-full grid grid-rows-2 items-center pb-3 pt-10">
         <div className="grid grid-cols-2">
-          <DataBlock title="Total Hours" data="300" />
-          <DataBlock title="Average Hours" data="7.5" />
+          <DataBlock title="Total Hours" data={data.totalHours.toFixed(2)} />
+          <DataBlock
+            title="Average Hours"
+            data={data.averageHours.toFixed(2)}
+          />
         </div>
 
         <div className="flex justify-center">
-          <DataBlock title="Maximum Hours" data="12" />
+          <DataBlock
+            title="Maximum Hours"
+            data={data.maximumHours.toFixed(2)}
+          />
         </div>
       </div>
     </main>
