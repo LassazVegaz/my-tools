@@ -79,11 +79,14 @@ export class WorkedHoursService {
   }
 
   /**
-   * Get numerical statistics of last 40 days.
+   * Get numerical statistics.
    * Data includes: total hours, average hours, and maximum hours.
    */
-  async getNumericStatistics(): Promise<NumericalStatistics> {
-    const workedHours = await this.getWorkedHours();
+  async getNumericStatistics(
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<NumericalStatistics> {
+    const workedHours = await this.getWorkedHours(startDate, endDate);
     const mapped = workedHours.map((w) => ({
       date: w.date,
       hours: w.hours.toNumber(),

@@ -13,7 +13,13 @@ const DataBlock = (props: DataBlockProps) => (
 );
 
 export default async function NumbersPage() {
-  const data = await workedHoursService.getNumericStatistics();
+  const endDate = new Date();
+  const startDate = new Date(endDate);
+  startDate.setDate(startDate.getDate() - 40);
+  const data = await workedHoursService.getNumericStatistics(
+    startDate,
+    endDate
+  );
 
   return (
     <main className="pt-5 h-screen grid grid-rows-[auto,1fr] items-center">
