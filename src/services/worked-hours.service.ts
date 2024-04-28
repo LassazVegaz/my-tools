@@ -79,7 +79,9 @@ export class WorkedHoursService {
   }
 
   /**
-   * Get numerical statistics.
+   * Get numerical statistics. You can filter data between two dates.
+   * `startDate` and `endDate` are inclusive.
+   *
    * Data includes: total hours, average hours, and maximum hours.
    */
   async getNumericStatistics(
@@ -87,19 +89,15 @@ export class WorkedHoursService {
     endDate?: Date
   ): Promise<NumericalStatistics> {
     const workedHours = await this.getWorkedHours(startDate, endDate);
-    const mapped = workedHours.map((w) => ({
-      date: w.date,
-      hours: w.hours.toNumber(),
-    }));
 
-    const totalHours = mapped.reduce(
+    const totalHours = workedHours.reduce(
       (total, workedHours) => total + workedHours.hours,
       0
     );
 
     const averageHours = totalHours / workedHours.length;
 
-    const maximumHours = Math.max(...mapped.map((w) => w.hours));
+    const maximumHours = Math.max(...workedHours.map((w) => w.hours));
 
     return {
       totalHours,

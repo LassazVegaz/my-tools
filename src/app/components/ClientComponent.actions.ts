@@ -1,5 +1,6 @@
 "use server";
-import { ChartData, FormValues } from "../helpers";
+import { WorkedHours } from "@prisma/client";
+import { FormValues } from "../helpers";
 import { workedHoursService } from "@/services";
 
 type SubmitFormParams = Omit<FormValues, "date"> & { date: Date };
@@ -25,10 +26,6 @@ export const submitForm = async (formValues: SubmitFormParams) => {
 export const getChartData = async (
   startDate?: Date,
   endDate?: Date
-): Promise<ChartData> => {
-  const data = await workedHoursService.getWorkedHours(startDate, endDate);
-  return data.map((workedHours) => ({
-    date: workedHours.date,
-    hours: workedHours.hours.toNumber(),
-  }));
+): Promise<WorkedHours[]> => {
+  return workedHoursService.getWorkedHours(startDate, endDate);
 };
