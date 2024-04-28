@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
-import { initialFormValues, formValidationSchema, ChartData } from "../helpers";
+import { initialFormValues, formValidationSchema } from "../helpers";
 import { getChartData, submitForm } from "./ClientComponent.actions";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
+import { WorkedHours } from "@prisma/client";
 
 const useClientComponentUtils = () => {
-  const [chartData, setChartData] = useState<ChartData>([]);
+  const [chartData, setChartData] = useState<WorkedHours[]>([]);
   const [isChartLoading, setIsChartLoading] = useState(true);
 
   const form = useFormik({

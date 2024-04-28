@@ -1,4 +1,3 @@
-import { WorkedHours } from "@prisma/client";
 import dayjs, { Dayjs } from "dayjs";
 import * as Yup from "yup";
 
@@ -18,7 +17,3 @@ export const formValidationSchema = Yup.object({
   date: Yup.date().required("Required"),
   hours: Yup.number().required("Required"),
 });
-
-export type ChartData = (Pick<WorkedHours, "date"> & {
-  hours: number;
-})[];
