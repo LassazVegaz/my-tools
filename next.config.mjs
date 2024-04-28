@@ -6,5 +6,5 @@ const withPWA = withPWAInit({
 });
 
 export default withPWA({
-  distDir: process.env.DEPLOY ? "build" : undefined,
+  distDir: process.env.DEPLOY === "1" ? "build" : undefined,
 });
