@@ -79,7 +79,9 @@ export class WorkedHoursService {
   }
 
   /**
-   * Get numerical statistics.
+   * Get numerical statistics. You can filter data between two dates.
+   * `startDate` and `endDate` are inclusive.
+   *
    * Data includes: total hours, average hours, and maximum hours.
    */
   async getNumericStatistics(
