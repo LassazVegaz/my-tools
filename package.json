@@ -7,12 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "deploy": "dotenv -e .env.deploy.local -c -- next build",
-    "deploy:start": "dotenv -e .env.deploy.local -c -- next start",
-    "prisma:migrate": "dotenv -e .env.development.local -c -- prisma migrate dev",
-    "prisma:migrate:prod": "dotenv -e .env.production.local -c -- prisma migrate deploy",
-    "scripts:copy-db": "dotenv -e scripts/.env.db-copy.local -- ts-node scripts/db-copy.ts"
+    "test": "jest"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.6",
