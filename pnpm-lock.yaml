@@ -114,9 +114,6 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
-      webpack:
-        specifier: ^5.91.0
-        version: 5.91.0
 
 packages:
 
