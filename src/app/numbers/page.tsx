@@ -1,4 +1,6 @@
+import { isAuthenticated } from "@/lib/server/auth";
 import { workedHoursService } from "@/services";
+import { redirect, RedirectType } from "next/navigation";
 
 type DataBlockProps = {
   title: string;
@@ -15,6 +17,8 @@ const DataBlock = (props: DataBlockProps) => (
 );
 
 export default async function NumbersPage() {
+  if (!isAuthenticated()) redirect("/auth", RedirectType.replace);
+
   const endDate = new Date();
   const startDate = new Date(endDate);
   startDate.setDate(startDate.getDate() - 40);
