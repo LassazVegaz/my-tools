@@ -23,7 +23,7 @@ const Button = () => {
 };
 
 export default function ClientComponent(props: React.ComponentProps<"form">) {
-  const [state, action] = useFormState(handleFormSubmit, " ");
+  const [state, action] = useFormState(handleFormSubmit, null);
 
   return (
     <form
