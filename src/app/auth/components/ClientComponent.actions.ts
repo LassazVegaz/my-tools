@@ -15,6 +15,6 @@ export const handleFormSubmit = async (_: unknown, form: FormData) => {
     signIn();
     redirect("/");
   } else {
-    return "";
+    return "Invalid password";
   }
 };
