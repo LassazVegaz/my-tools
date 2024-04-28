@@ -5,6 +5,8 @@ type DataBlockProps = {
   data: string;
 };
 
+export const dynamic = "force-dynamic";
+
 const DataBlock = (props: DataBlockProps) => (
   <div className="flex flex-col items-center justify-center w-56 h-56 rounded-full justify-self-center cursor-pointer border-2 border-blue-500 hover:bg-slate-800 duration-700 hover:shadow-lg shadow-blue-400">
     <h2 className="text-2xl">{props.title}</h2>
