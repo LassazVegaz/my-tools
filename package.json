@@ -22,7 +22,7 @@
     "@mui/material": "^5.15.15",
     "@mui/x-charts": "^6.19.8",
     "@mui/x-date-pickers": "^6.19.9",
-    "@prisma/client": "5.8.1",
+    "@prisma/client": "5.13.0",
     "dayjs": "^1.11.11",
     "fk-mui": "^1.0.6",
     "formik": "^2.4.6",
