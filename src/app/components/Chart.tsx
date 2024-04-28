@@ -1,14 +1,14 @@
 "use client";
 import { useTheme } from "@mui/material";
 import { LineChart } from "@mui/x-charts";
+import { WorkedHours } from "@prisma/client";
 import { useMemo } from "react";
-import { ChartData } from "../helpers";
 
 type ChartProps = {
-  chartData: ChartData;
+  chartData: WorkedHours[];
 };
 
-const formatWorkedHours = (workedHours: ChartData) =>
+const formatWorkedHours = (workedHours: WorkedHours[]) =>
   workedHours.map((workedHour) => ({
     hours: workedHour.hours,
     dateLabel: `${workedHour.date.getDate()}/${workedHour.date.getMonth() + 1}`,
