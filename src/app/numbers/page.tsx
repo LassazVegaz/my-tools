@@ -1,5 +1,6 @@
 import { isAuthenticated } from "@/lib/server/auth";
 import { workedHoursService } from "@/services";
+import Link from "next/link";
 import { redirect, RedirectType } from "next/navigation";
 
 type DataBlockProps = {
@@ -29,6 +30,14 @@ export default async function NumbersPage() {
 
   return (
     <main className="pt-5 h-screen grid grid-rows-[auto,1fr] items-center">
+      <Link
+        href="/"
+        replace
+        className="absolute right-2 top-2 w-8 h-8 flex items-center justify-center cursor-pointer"
+      >
+        X
+      </Link>
+
       <h1 className="text-center text-4xl">
         Numerical Statistics of Last 40 Days
       </h1>
