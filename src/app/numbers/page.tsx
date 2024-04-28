@@ -33,7 +33,7 @@ export default async function NumbersPage() {
       <Link
         href="/"
         replace
-        className="absolute right-2 top-2 w-8 h-8 flex items-center justify-center cursor-pointer"
+        className="absolute right-2 top-2 w-8 h-8 flex items-center justify-center cursor-pointer text-red-500"
       >
         X
       </Link>
