@@ -1,4 +1,7 @@
+import { isAuthenticated } from "@/lib/server/auth";
 import { workedHoursService } from "@/services";
+import Link from "next/link";
+import { redirect, RedirectType } from "next/navigation";
 
 type DataBlockProps = {
   title: string;
@@ -15,6 +18,8 @@ const DataBlock = (props: DataBlockProps) => (
 );
 
 export default async function NumbersPage() {
+  if (!isAuthenticated()) redirect("/auth", RedirectType.replace);
+
   const endDate = new Date();
   const startDate = new Date(endDate);
   startDate.setDate(startDate.getDate() - 40);
@@ -25,6 +30,14 @@ export default async function NumbersPage() {
 
   return (
     <main className="pt-5 h-screen grid grid-rows-[auto,1fr] items-center">
+      <Link
+        href="/"
+        replace
+        className="absolute right-2 top-2 w-8 h-8 flex items-center justify-center cursor-pointer text-red-500"
+      >
+        X
+      </Link>
+
       <h1 className="text-center text-4xl">
         Numerical Statistics of Last 40 Days
       </h1>

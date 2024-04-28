@@ -1,0 +1,33 @@
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  div {
+    width: 100px;
+    height: 100px;
+    background: white;
+    animation: loader-ani 1s linear infinite;
+  }
+}
+
+@keyframes loader-ani {
+  0% {
+    transform: rotate(0deg) scale(1);
+    border-radius: 0;
+    background-color: white;
+    box-shadow: 0 0 0px 0px rgb(60, 0, 255);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 20px 10px rgb(0, 208, 255);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    border-radius: 0;
+    background-color: white;
+    box-shadow: 0 0 0px 0px rgb(60, 0, 255);
+  }
+}

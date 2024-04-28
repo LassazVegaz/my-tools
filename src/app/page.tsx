@@ -1,8 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import { ClientComponent } from "./components";
 import Link from "next/link";
+import { isAuthenticated } from "@/lib/server/auth";
+import { RedirectType, redirect } from "next/navigation";
 
 export default function Home() {
+  if (!isAuthenticated()) redirect("/auth", RedirectType.replace);
+
   return (
     <Box
       height="100vh"
