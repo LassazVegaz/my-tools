@@ -15,20 +15,11 @@ type AddFormProps = {
 };
 
 const AddForm = (props: AddFormProps) => (
-  <Box
-    component="form"
+  <form
     onSubmit={props.form.handleSubmit}
-    bgcolor="#EAECFF"
-    boxShadow="0px 0px 9.9px 0px #6472FF"
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    height="20vh"
-    gap={2}
-    sx={{
-      ["@media (prefers-color-scheme: dark)"]: {
-        bgcolor: "#001d2f",
-      },
+    className="bg-[#001d2f] shadow-md flex items-center justify-center h-[20vh] gap-2"
+    style={{
+      boxShadow: "0px 0px 9.9px 0px #6472FF",
     }}
   >
     <FormDateField
@@ -38,7 +29,25 @@ const AddForm = (props: AddFormProps) => (
       maxDate={dayjs()}
       minDate={minDate}
       slotProps={{
-        textField: { size: "small", sx: { width: 200 } },
+        textField: {
+          size: "small",
+          sx: {
+            width: 200,
+            "& .MuiOutlinedInput-root": {
+              color: "white",
+            },
+            "& fieldset": {
+              borderColor: "rgba(25, 118, 210, 0.5)",
+            },
+          },
+        },
+        inputAdornment: {
+          sx: {
+            "& svg": {
+              color: "#1976d2",
+            },
+          },
+        },
       }}
     />
 
@@ -51,6 +60,12 @@ const AddForm = (props: AddFormProps) => (
         width: 130,
         "& input": {
           textAlign: "center",
+        },
+        "& .MuiOutlinedInput-root": {
+          color: "white",
+        },
+        "& fieldset": {
+          borderColor: "rgba(25, 118, 210, 0.5)",
         },
       }}
     />
@@ -75,7 +90,7 @@ const AddForm = (props: AddFormProps) => (
         <CircularProgress size={25} thickness={5} />
       </Box>
     </Box>
-  </Box>
+  </form>
 );
 
 export default AddForm;

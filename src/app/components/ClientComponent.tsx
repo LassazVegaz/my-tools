@@ -12,7 +12,7 @@ const ClientComponent = () => {
       <div className="flow-root items-center pt-0 pb-4 relative">
         <Chart chartData={utils.chartData} />
 
-        {(utils.isChartLoading || true) && <BoxProgress />}
+        {utils.isChartLoading && <BoxProgress />}
       </div>
       <AddForm form={utils.form} />
     </>
