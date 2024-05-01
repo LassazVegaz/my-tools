@@ -1,4 +1,3 @@
-import { Box, Typography } from "@mui/material";
 import { ClientComponent } from "./components";
 import Link from "next/link";
 import { isAuthenticated } from "@/lib/server/auth";
@@ -8,14 +7,7 @@ export default function Home() {
   if (!isAuthenticated()) redirect("/auth", RedirectType.replace);
 
   return (
-    <Box
-      height="100vh"
-      display="grid"
-      gridTemplateRows="auto 1fr auto"
-      bgcolor="background.default"
-      position="relative"
-      sx={{ transitionDuration: ".5s" }}
-    >
+    <div className="h-screen grid grid-rows-[auto,1fr,auto] relative transition-all duration-500">
       <Link
         href="/numbers"
         className="absolute right-2 top-2 border rounded-full w-8 h-8 flex items-center justify-center cursor-pointer"
@@ -23,11 +15,11 @@ export default function Home() {
         1
       </Link>
 
-      <Typography variant="h5" textAlign="center" py={2}>
+      <h1 className="text-center text-3xl py-2">
         Worked Hours of Last 40 Days
-      </Typography>
+      </h1>
 
       <ClientComponent />
-    </Box>
+    </div>
   );
 }
