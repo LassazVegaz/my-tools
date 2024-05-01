@@ -43,14 +43,11 @@ export class WorkedHoursService {
 
   /**
    * Checks if worked hours exist for a given date.
-   * @param date - Don't worry about the time part of the date. It will be ignored.
    */
   async workedHoursExist(date: Date): Promise<boolean> {
-    const dateWithoutTime = new Date(date.toDateString());
-
     const workedHours = await this.prisma.workedHours.findUnique({
       where: {
-        date: dateWithoutTime,
+        date,
       },
     });
 
