@@ -28,6 +28,16 @@ const Chart = (props: ChartProps) => {
         {
           scaleType: "point",
           dataKey: "dateLabel",
+          tickLabelStyle: {
+            fill: "rgb(98 98 201)",
+          },
+        },
+      ]}
+      yAxis={[
+        {
+          tickLabelStyle: {
+            fill: "rgb(98 98 201)",
+          },
         },
       ]}
       series={[
@@ -37,11 +47,6 @@ const Chart = (props: ChartProps) => {
         },
       ]}
       dataset={dataset}
-      sx={{
-        "& .MuiChartsAxis-root, & .MuiChartsAxis-line, & .MuiChartsAxis-tick": {
-          opacity: 0.5,
-        },
-      }}
     />
   );
 };
