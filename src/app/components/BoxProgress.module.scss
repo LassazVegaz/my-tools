@@ -1,6 +1,11 @@
 .box-progress {
   animation: box-progress 1s linear infinite;
   background: radial-gradient(#00b8d1 0%, #a5a5ff45 100%);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
 @keyframes box-progress {
