@@ -1,3 +1,4 @@
+import { dateToNumber } from "@/lib/dates.lib";
 import { isAuthenticated } from "@/lib/server/auth";
 import { workedHoursService } from "@/services";
 import Link from "next/link";
@@ -20,12 +21,15 @@ const DataBlock = (props: DataBlockProps) => (
 export default async function NumbersPage() {
   if (!isAuthenticated()) redirect("/auth", RedirectType.replace);
 
+  // statistics consider data for the last 40 days
   const endDate = new Date();
+  endDate.setDate(endDate.getDate() - 1); // yesterday
   const startDate = new Date(endDate);
-  startDate.setDate(startDate.getDate() - 40);
+  startDate.setDate(startDate.getDate() - 39); // 39 days ago from yesterday (40 all together)
+
   const data = await workedHoursService.getNumericStatistics(
-    startDate,
-    endDate
+    dateToNumber(startDate),
+    dateToNumber(endDate)
   );
 
   return (

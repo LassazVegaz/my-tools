@@ -37,7 +37,7 @@ const useClientComponentUtils = () => {
     const endDate = new Date();
     endDate.setDate(endDate.getDate() - 1); // yesterday
     const startDate = new Date(endDate);
-    startDate.setDate(startDate.getDate() - 40); // 40 days ago from yesterday
+    startDate.setDate(startDate.getDate() - 39); // 39 days ago from yesterday (40 all together)
 
     const data = await getChartData(
       dateToNumber(startDate),
