@@ -4,6 +4,7 @@ import { getChartData, submitForm } from "./ClientComponent.actions";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
 import { WorkedHours } from "@prisma/client";
+import { dateToNumber } from "@/lib/dates.lib";
 
 const useClientComponentUtils = () => {
   const [chartData, setChartData] = useState<WorkedHours[]>([]);
@@ -15,7 +16,7 @@ const useClientComponentUtils = () => {
     onSubmit: async () => {
       try {
         await submitForm({
-          date: form.values.date!.toDate(),
+          date: dateToNumber(form.values.date!.toDate()),
           hours: form.values.hours,
         });
         form.resetForm();
@@ -34,10 +35,14 @@ const useClientComponentUtils = () => {
 
     // chart can show data for the last 40 days
     const endDate = new Date();
+    endDate.setDate(endDate.getDate() - 1); // yesterday
     const startDate = new Date(endDate);
-    startDate.setDate(startDate.getDate() - 40);
+    startDate.setDate(startDate.getDate() - 40); // 40 days ago from yesterday
 
-    const data = await getChartData(startDate, endDate);
+    const data = await getChartData(
+      dateToNumber(startDate),
+      dateToNumber(endDate)
+    );
     setChartData(data);
     setIsChartLoading(false);
   }, []);
