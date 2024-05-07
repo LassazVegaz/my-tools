@@ -8,6 +8,6 @@ datasource db {
 }
 
 model WorkedHours {
-  date  DateTime @id @map("_id")
+  date  Int   @id @map("_id")
   hours Float
 }
