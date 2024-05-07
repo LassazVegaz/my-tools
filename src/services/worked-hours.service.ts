@@ -11,29 +11,25 @@ export class WorkedHoursService {
 
   /**
    * Adds worked hours for a given date.
-   * @param date - Don't worry about the time part of the date. It will be ignored.
+   * @param date In `YYYYMMDD` format
    */
-  async addWorkedHours(workedHours: number, date: Date): Promise<void> {
-    const dateWithoutTime = new Date(date.toDateString());
-
+  async addWorkedHours(workedHours: number, date: number): Promise<void> {
     await this.prisma.workedHours.create({
       data: {
         hours: workedHours,
-        date: dateWithoutTime,
+        date: date,
       },
     });
   }
 
   /**
    * Updates worked hours for a given date.
-   * @param date - Don't worry about the time part of the date. It will be ignored.
+   * @param date In `YYYYMMDD` format
    */
-  async updateWorkedHours(workedHours: number, date: Date): Promise<void> {
-    const dateWithoutTime = new Date(date.toDateString());
-
+  async updateWorkedHours(workedHours: number, date: number): Promise<void> {
     await this.prisma.workedHours.update({
       where: {
-        date: dateWithoutTime,
+        date: date,
       },
       data: {
         hours: workedHours,
@@ -43,11 +39,12 @@ export class WorkedHoursService {
 
   /**
    * Checks if worked hours exist for a given date.
+   * @param date In `YYYYMMDD` format
    */
-  async workedHoursExist(date: Date): Promise<boolean> {
+  async workedHoursExist(date: number): Promise<boolean> {
     const workedHours = await this.prisma.workedHours.findUnique({
       where: {
-        date,
+        date: date,
       },
     });
 
@@ -57,18 +54,24 @@ export class WorkedHoursService {
   /**
    * Get worked hours ordered by date. You can filter data between two dates.
    * `startDate` and `endDate` are inclusive.
+   * @param endDate In `YYYYMMDD` format
+   * @param startDate In `YYYYMMDD` format
    */
   async getWorkedHours(
-    startDate?: Date,
-    endDate?: Date
+    startDate?: number,
+    endDate?: number
   ): Promise<WorkedHours[]> {
+    const includeWhere = startDate !== undefined && endDate !== undefined;
+
     return await this.prisma.workedHours.findMany({
-      where: {
-        date: {
-          gte: startDate,
-          lte: endDate,
-        },
-      },
+      where: includeWhere
+        ? {
+            date: {
+              gte: startDate,
+              lte: endDate,
+            },
+          }
+        : undefined,
       orderBy: {
         date: "asc",
       },
@@ -80,10 +83,13 @@ export class WorkedHoursService {
    * `startDate` and `endDate` are inclusive.
    *
    * Data includes: total hours, average hours, and maximum hours.
+   *
+   * @param endDate In `YYYYMMDD` format
+   * @param startDate In `YYYYMMDD` format
    */
   async getNumericStatistics(
-    startDate?: Date,
-    endDate?: Date
+    startDate?: number,
+    endDate?: number
   ): Promise<NumericalStatistics> {
     const workedHours = await this.getWorkedHours(startDate, endDate);
 
