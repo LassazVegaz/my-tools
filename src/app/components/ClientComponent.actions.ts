@@ -3,7 +3,10 @@ import { WorkedHours } from "@prisma/client";
 import { FormValues } from "../helpers";
 import { workedHoursService } from "@/services";
 
-type SubmitFormParams = Omit<FormValues, "date"> & { date: Date };
+type SubmitFormParams = Omit<FormValues, "date"> & {
+  /**In `YYYYMMDD` format */
+  date: number;
+};
 
 /**
  * If working hours for the given date exist, they will be overwritten.
@@ -22,10 +25,13 @@ export const submitForm = async (formValues: SubmitFormParams) => {
 /**
  * Get worked hours ordered by date. You can filter data between two dates.
  * `startDate` and `endDate` are inclusive.
+ *
+ * @param startDate In `YYYYMMDD` format
+ * @param endDate In `YYYYMMDD` format
  */
 export const getChartData = async (
-  startDate?: Date,
-  endDate?: Date
+  startDate?: number,
+  endDate?: number
 ): Promise<WorkedHours[]> => {
   return workedHoursService.getWorkedHours(startDate, endDate);
 };
