@@ -7,6 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// date is an integer in the format of YYYYMMDD
 model WorkedHours {
   date  Int   @id @map("_id")
   hours Float
